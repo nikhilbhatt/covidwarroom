@@ -5,6 +5,7 @@
 // require_once 'libraries/Core.php';
 // require_once 'libraries/Database.php';
 require_once 'config/config.php';
+require_once 'helpers/session_helper.php';
 
 //add autoloader file here so that all the required file get automatically loaded.
 spl_autoload_register(function($className)
