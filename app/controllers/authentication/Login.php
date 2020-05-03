@@ -35,32 +35,20 @@
                   { 
                       $location='';
                     switch($_SESSION['type']){
-                        case 'scr':
+                        case 'statecontrolroom':
                             //go to state control room dashboard
-                            $location='Login'; //location variable contains Controller Name
+                            $location='AddUser'; //location variable contains Controller Name
                             break;
-                        case 'da':
+                        case 'districtauthority':
                             //go to district authority controller
-                            pass;
+                            $location='AddUser';
                             break;
-                        case 'dcc':
-                            //got to district collection center dashboard
-                            pass;
-                            break;
-                        case 'tl':
-                            //go to testing lab dashboard
-                            pass;
-                            break;
-                        case 'cmo':
-                            //go to Cheif Medical officer Dashboard
-                            pass;
-                            break;
-                        case 'sc':
-                            //got to Sample collector dashoard
-                            pass;
-                            break;
+                        case 'districtuser':
+                            //go to district user controller
+                            $location='Login';
+                            break;                       
                         default:
-                            //something wrong
+                            //something went wrong or error
                             echo '<script>alert("Something went wrong!Try Again");document.location="'.URLROOT.'/Login"</script>';
                     }  
                     echo '<script>alert("Verification Successful");document.location="'.URLROOT.'/'.$location.'"</script>';
