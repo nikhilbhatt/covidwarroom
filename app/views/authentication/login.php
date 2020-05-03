@@ -21,12 +21,9 @@
             <div class="form-group">
                 <label for="type">Type: <sup>*</sup></label>
                 <select type="select" name="type" class="form-control">
-                    <option value="scr">State Control Room</option>
-                    <option value="cmo">Chief Medical Officer</option>
-                    <option value="da">District Authority</option>
-                    <option value="dcc">District Control Room</option>
-                    <option value="tl">Testing Lab</option>
-                    <option value="sc">Sample Collector</option>
+                    <option value="statecontrolroom">State Control Room</option>
+                    <option value="districtauthority">District Authority</option>
+                    <option value="districtuser">District User</option>
                     
                 </select>
                 <span class="invalid-feedback"><?php echo $data['type_err'];?> </span>
