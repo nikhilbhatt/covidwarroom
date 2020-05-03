@@ -18,9 +18,15 @@
         if(file_exists('../app/controllers/authentication/'.ucwords($url[0]).'.php'))
         {
             $this->currentController=ucwords($url[0]);
+            require_once '../app/controllers/authentication/'.$this->currentController.'.php';
             unset($url[0]);
         }
-        require_once '../app/controllers/authentication/'.$this->currentController.'.php';
+        elseif(file_exists('../app/controllers/functions/'.ucwords($url[0]).'.php'))
+        {
+            $this->currentController=ucwords($url[0]);
+            require_once '../app/controllers/functions/'.$this->currentController.'.php';
+            unset($url[0]);
+        }
         $this->currentController=new $this->currentController;
 
         //now check for the second part of url 
