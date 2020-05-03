@@ -118,6 +118,18 @@ class AuthenticationModel{
         $this->db->bindvalues(':id',$id);
         return $this->db->execute();
     }
+
+    public function updatePassword($data)
+       {
+            if(session_status()==PHP_SESSION_NONE)
+            {
+              session_start();   
+            }
+            $this->db->query('UPDATE users SET password=:password WHERE username=:username');
+            $this->db->bindvalues(':password',$data['password']);
+            $this->db->bindvalues(':username',$_SESSION['username']);
+            return $this->db->execute();
+       }
 }
 
 ?>
