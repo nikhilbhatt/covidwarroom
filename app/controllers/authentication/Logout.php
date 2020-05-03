@@ -6,14 +6,14 @@
      }
      public function index()
      {
-         if(PHP_SESSION_NONE)
+         if(session_status()==PHP_SESSION_NONE)
          {
              session_start();
          }
-         session_unset($_SESSION['type']);
-         session_unset($_SESSION['username']);
-         session_unset($_SESSION['district']);
+         session_unset();
          session_destroy();
+         echo '<script>alert("Logout Successful");location="'.URLROOT.'/Login"</script>';
+
      }
  }
 
