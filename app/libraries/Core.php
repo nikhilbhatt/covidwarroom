@@ -27,6 +27,12 @@
             require_once '../app/controllers/functions/'.$this->currentController.'.php';
             unset($url[0]);
         }
+        elseif(file_exists('../app/controllers/resourcescontroller/'.ucwords($url[0]).'.php'))
+        {
+            $this->currentController=ucwords($url[0]);
+            require_once '../app/controllers/resourcescontroller/'.$this->currentController.'.php';
+            unset($url[0]);
+        }
         $this->currentController=new $this->currentController;
 
         //now check for the second part of url 
