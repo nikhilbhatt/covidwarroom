@@ -119,6 +119,12 @@ class StateResourcesModel{
         $this->db->bindvalues(':id',$data['id']);
         return $this->db->execute();
     }
+
+
+    public function addDistrictKits($data)
+    {
+        //this function will be continued tomorrow
+    }
 }
 
 ?>
