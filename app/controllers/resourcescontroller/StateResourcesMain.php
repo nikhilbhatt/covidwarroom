@@ -92,6 +92,8 @@ class StateResourcesMain extends Controller
             echo '<script>alert("You are not allowed to do this operation");location="'.URLROOT.'/StateResourcesMain"</script>';
         }
     }
+
+
 }
 
 ?>
