@@ -10,8 +10,11 @@ class StateResourcesMain extends Controller
     public function index()
     {
         $res=$this->stateResourcesModel->getStateData();
+        $approvedres=$this->stateResourcesModel->getApproved();
+        
         $data=[
-            'res'=>$res
+            'res'=>$res,
+            'approvedres'=>$approvedres
         ];
         $this->views('resources/stateresourcesmain',$data);
     }

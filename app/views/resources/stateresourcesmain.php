@@ -52,6 +52,111 @@ SEE the list which is not yet approved by the state  -->
     </div>
 </div>
 
+<div class="container">
+    <div class="mt-4">
+        <div class="card card-body bg-light md-5 mb-5 table-responsive-md table-responsive-lg table-responsive-sm">
+            <h1 class="text-center"> Total Kits available in district</h1>
+            <?php if(empty($data['approvedres'])):?>
+            <h4> No data Available</h4>
+            <?php else: ?>
+            <table id="tableid" class="table table-striped table-hover mb-5 table-responsive" style="width:100%">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">District</th>
+                    <th scope="col">PPEKits Added Today</th>
+                    <th scope="col">PPEKits Used Today</th>
+                    <th scope="col">PPEKits Vacant Today</th>
+                    <th scope="col">Total PPEKits</th>
+                    <th scope="col">Total PPEKits Used</th>
+                    <th scope="col">Total PPEKits Vacant</th>
+                    <th scope="col">VTM Added Today</th>
+                    <th scope="col">VTM Used Today</th>
+                    <th scope="col">VTM Vacant Today</th>
+                    <th scope="col">Total VTM</th>
+                    <th scope="col">Total VTM Used</th>
+                    <th scope="col">Total VTM Vacant</th>
+
+                    <th scope="col">n95 Added Today</th>
+                    <th scope="col">n95 Used Today</th>
+                    <th scope="col">n95 Vacant Today</th>
+                    <th scope="col">Total n95</th>
+                    <th scope="col">Total n95 Used</th>
+                    <th scope="col">Total n95 Vacant</th>
+
+                    <th scope="col">Total ventilator</th>
+                    <th scope="col">Total ventilator Used</th>
+                    <th scope="col">Total ventilator Vacant</th>
+
+                    <th scope="col">Total Patient Bed</th>
+                    <th scope="col">Total Patient Bed Used</th>
+                    <th scope="col">Total Patient Bed Vacant</th>
+
+                    <th scope="col">Total Quarantine Bed</th>
+                    <th scope="col">Total Quarantine Bed Used</th>
+                    <th scope="col">Total Quarantine Bed Vacant</th>
+
+                    <th scope="col">Total ICU Bed</th>
+                    <th scope="col">Total ICU Bed Used</th>
+                    <th scope="col">Total ICU  Bed Vacant</th>
+                    
+                    <th scope="col">Last Updated</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php $key=1;?>
+                <?php foreach($data['approvedres'] as $result) : ?>
+                <tr>
+                    <td scope="row"><?php echo $key++;?></td>
+                    <td><?php echo $result->district;?></td>
+                    <td><?php echo $result->ppekitsaddedtoday;?></td>
+                    <td><?php echo $result->ppekitsusedtoday;?></td>
+                    <td><?php echo $result->ppekitsvacanttoday;?></td>
+                    <td><?php echo $result->ppekitscumulative;?></td>
+                    <td><?php echo $result->ppekitsusedcumulative;?></td>
+                    <td><?php echo $result->ppekitsvacantcumulative;?></td>
+                    <td><?php echo $result->vtmaddedtoday;?></td>
+                    <td><?php echo $result->vtmusedtoday;?></td>
+                    <td><?php echo $result->vtmvacanttoday;?></td>
+                    <td><?php echo $result->vtmcumulative;?></td>
+                    <td><?php echo $result->vtmusedcumulative;?></td>
+                    <td><?php echo $result->vtmvacantcumulative;?></td>
+
+                    <td><?php echo $result->n95addedtoday;?></td>
+                    <td><?php echo $result->n95usedtoday;?></td>
+                    <td><?php echo $result->n95vacanttoday;?></td>
+                    <td><?php echo $result->n95cumulative;?></td>
+                    <td><?php echo $result->n95usedcumulative;?></td>
+                    <td><?php echo $result->n95vacantcumulative;?></td>
+
+                    <td><?php echo $result->ventilatorcumulative;?></td>
+                    <td><?php echo $result->ventilatorusedcumulative;?></td>
+                    <td><?php echo $result->ventilatorvacantcumulative;?></td>
+
+
+                    <td><?php echo $result->patientbedcumulative;?></td>
+                    <td><?php echo $result->patientbedusedcumulative;?></td>
+                    <td><?php echo $result->patientbedvacantcumulative;?></td>
+
+                    <td><?php echo $result->quarantinebedcumulative;?></td>
+                    <td><?php echo $result->quarantinebedusedcumulative;?></td>
+                    <td><?php echo $result->quarantinebedvacantcumulative;?></td>
+
+                    <td><?php echo $result->icucumulative;?></td>
+                    <td><?php echo $result->icuusedcumulative;?></td>
+                    <td><?php echo $result->icuvacantcumulative;?></td>
+                    <td><?php echo $result->date;?></td>
+                </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+                <?php endif;?>
+            </div>
+            <div class="mt-4">
+        </div>
+    </div>
+</div>
+
 <!-- Modal add NEW PPE KITS -->
 <div class="modal fade" id="addkits" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
