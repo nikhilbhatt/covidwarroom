@@ -162,7 +162,7 @@ SEE the list which is not yet approved by the state  -->
     </div>
 </div>
 
-<!-- Modal add NEW PPE KITS -->
+<!-- Modal add NEW KITS By district directly -->
 <div class="modal fade" id="addkits" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -174,24 +174,12 @@ SEE the list which is not yet approved by the state  -->
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="<?php echo URLROOT;?>/StateResourcesMain/distributeKits" method="post">
+      <form action="<?php echo URLROOT;?>/DistrictResources/addKits" method="post">
       <div class="modal-body">
                   <div class="form-group">
                     <label for="district">District<sup class="text-danger">*</sup></label>
                     <select class="form-control" name="district">
-                        <option value="almora">Almora</option>
-                        <option value="bageshwar">Bageshwar</option>
-                        <option value="chamoli">Chamoli</option>
-                        <option value="champawat">Champawat</option>
-                        <option value="dehradun">Dehradun</option>
-                        <option value="haridwar">Haridwar</option>
-                        <option value="nainital">Nainital</option>
-                        <option value="paurigarhwal">Pauri Garhwal</option>
-                        <option value="pithoragarh">Pithoragarh</option>
-                        <option value="rudraprayag">Rudraprayag</option>
-                        <option value="tehrigarhwal">Tehri Garhwal</option>
-                        <option value="udhamsinghnagar">Udham Singh Nagar</option>
-                        <option value="uttarkashi">Uttarkashi</option>
+                        <option value="<?php echo $_SESSION['district'];?>"><?php echo $_SESSION['district'];?></option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -209,6 +197,18 @@ SEE the list which is not yet approved by the state  -->
                   <div class="form-group">
                     <label for="ventilator">Ventilator</label>
                     <input type="number" class="form-control" value="0"  name="ventilator">
+                  </div>
+                  <div class="form-group">
+                    <label for="patientbed">Patient Bed</label>
+                    <input type="number" class="form-control" value="0" name="patientbed">
+                  </div>
+                  <div class="form-group">
+                    <label for="quarantinebed">Quarantine Bed</label>
+                    <input type="number" class="form-control"  value="0"  name="quarantinebed">
+                  </div>
+                  <div class="form-group">
+                    <label for="icu">ICU bed</label>
+                    <input type="number" class="form-control" value="0"  name="icu">
                   </div>
                   
       </div>
