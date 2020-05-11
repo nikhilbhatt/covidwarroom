@@ -108,8 +108,8 @@ SEE the list which is not yet approved by the state  -->
                     <td><?php echo $result->n95usedtoday;?></td>
                     <td><?php echo $result->n95vacanttoday;?></td>
                     <td><?php echo $result->n95cumulative;?></td>
-                    <td><?php echo $result->n95cumulative;?></td>
-                    <td><?php echo $result->n95cumulative;?></td>
+                    <td><?php echo $result->n95usedcumulative;?></td>
+                    <td><?php echo $result->n95vacantcumulative;?></td>
                 </tr>
                 <tr>
                     <td scope="row"><?php echo $key++;?></td>
