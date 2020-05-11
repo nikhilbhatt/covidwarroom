@@ -31,7 +31,7 @@ class StateResourcesMain extends Controller
             {   
                 echo '<script>alert("Must enter a value for district");location="'.URLROOT.'/StateResourcesMain"</script>'; 
             }
-            elseif($data['ppekits']<0&&$data['n95']<0&&$data['vtm']<0&&$data['ventilator']<0)
+            elseif($data['ppekits']<0||$data['n95']<0||$data['vtm']<0||$data['ventilator']<0)
             {
                 echo '<script>alert("Must enter a positive value");location="'.URLROOT.'/StateResourcesMain"</script>'; 
             }

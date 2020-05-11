@@ -23,7 +23,7 @@ class StateResourcesModel{
     }
 
     public function updateKits($data){
-        $this->db->query('UPDATE notapprovedresources SET district=:district,ppekits=:ppe,n95=:n95,vtm=:vtm,ventilator=:ventilator,date=now () WHERE id=:id');
+        $this->db->query('UPDATE notapprovedresources SET district=:district,ppekits=:ppe,n95=:n95,vtm=:vtm,ventilator=:ventilator,date=now() WHERE id=:id');
         $this->db->bindvalues(':district',$data['district']);
         $this->db->bindvalues(':ppe',$data['ppekits']);
         $this->db->bindvalues(':n95',$data['n95']);
