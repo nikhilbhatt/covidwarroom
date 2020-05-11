@@ -41,7 +41,7 @@
                             break;
                         case 'districtauthority':
                             //go to district authority controller
-                            $location='AddUser';
+                            $location='DistrictResources';
                             break;
                         case 'districtuser':
                             //go to district user controller
