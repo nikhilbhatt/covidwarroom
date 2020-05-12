@@ -166,11 +166,11 @@ class StateResourcesModel{
             $this->db->query('INSERT INTO 
             approvedresources(ppekitsaddedtoday,ppekitsvacanttoday,ppekitscumulative,ppekitsvacantcumulative,vtmaddedtoday,
                 vtmvacanttoday,vtmcumulative,vtmvacantcumulative,n95addedtoday,n95vacanttoday,n95cumulative,n95vacantcumulative,ventilatorcumulative,
-                ventilatorvacantcumulative,district,patientbedcumulative,patientbedvacantcumulative,quarantinebedcumulative,quarantinebedvedvacantcumulative,
+                ventilatorvacantcumulative,district,patientbedcumulative,patientbedvacantcumulative,quarantinebedcumulative,quarantinebedvacantcumulative,
                 icucumulative,icuvacantcumulative)
             VALUES(:ppetoday,:ppevacant,:ppecumulative,:ppevacantcumulative,:vtmtoday,:vtmvacant,:vtmcumulative,:vtmvacantcumulative,:n95today,
                 :n95vacant,:n95cumulative,:n95vacantcumulative,:ventilatorcumulative,:ventilatorvacant,:district,:patientbedcumulative,:patientbedvacantcumulative,
-                :quarantinebedcumulative,:quarantinebedvedvacantcumulative,:icucumulative,:icuvacantcumulative)
+                :quarantinebedcumulative,:quarantinebedvacantcumulative,:icucumulative,:icuvacantcumulative)
               ');
             $this->db->bindvalues(':ppetoday',$data['ppekits']);
             $this->db->bindvalues(':ppevacant',$data['ppekits']);
