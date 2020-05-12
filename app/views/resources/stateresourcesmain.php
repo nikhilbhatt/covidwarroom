@@ -2,7 +2,7 @@
 <!-- Distribute NEW PPE kits to state:-
 SEE the total PPE kits and thier availability in state
 SEE the list which is not yet approved by the state  -->
-
+<a href="<?php echo URLROOT;?>/AddUser" class="btn btn-success">Add User</a>
 <div class="container">
     <div class="mt-4">
         <div md-5 mt-2 align="right">
@@ -109,22 +109,42 @@ SEE the list which is not yet approved by the state  -->
                 <tr>
                     <td scope="row"><?php echo $key++;?></td>
                     <td><?php echo $result->district;?></td>
-                    <td><?php echo $result->ppekitsaddedtoday;?></td>
-                    <td><?php echo $result->ppekitsusedtoday;?></td>
-                    <td><?php echo $result->ppekitsvacanttoday;?></td>
+                    <?php if(date("y-m-d",time())==date("y-m-d",strtotime($result->date))):?>
+                      <td><?php echo $result->ppekitsaddedtoday;?></td>
+                      <td><?php echo $result->ppekitsusedtoday;?></td>
+                      <td><?php echo $result->ppekitsvacanttoday;?></td>
+                    <?php else:?>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    <?php endif;?>
                     <td><?php echo $result->ppekitscumulative;?></td>
                     <td><?php echo $result->ppekitsusedcumulative;?></td>
                     <td><?php echo $result->ppekitsvacantcumulative;?></td>
+                    
+                    <?php if(date("y-m-d",time())==date("y-m-d",strtotime($result->date))):?>
                     <td><?php echo $result->vtmaddedtoday;?></td>
                     <td><?php echo $result->vtmusedtoday;?></td>
                     <td><?php echo $result->vtmvacanttoday;?></td>
+                    <?php else:?>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    <?php endif;?>
                     <td><?php echo $result->vtmcumulative;?></td>
                     <td><?php echo $result->vtmusedcumulative;?></td>
                     <td><?php echo $result->vtmvacantcumulative;?></td>
+                    
 
+                    <?php if(date("y-m-d",time())==date("y-m-d",strtotime($result->date))):?>
                     <td><?php echo $result->n95addedtoday;?></td>
                     <td><?php echo $result->n95usedtoday;?></td>
                     <td><?php echo $result->n95vacanttoday;?></td>
+                    <?php else:?>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    <?php endif;?>
                     <td><?php echo $result->n95cumulative;?></td>
                     <td><?php echo $result->n95usedcumulative;?></td>
                     <td><?php echo $result->n95vacantcumulative;?></td>

@@ -3,7 +3,10 @@ class StateResourcesMain extends Controller
 {   
     public function __construct()
     {
-        // die('as');
+        if(!isLoggedIn('statecontrolroom'))
+        {
+            echo '<script>alert("You do not have the persmission to access this page");location="'.URLROOT.'/Login"</script>';
+        }
         $this->stateResourcesModel=$this->model('StateResourcesModel');
     }
 
