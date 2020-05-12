@@ -67,8 +67,6 @@ class DistrictResources extends Controller
                 'quarantinebed'=>(int)$_POST['quarantinebed'],
                 'icu'=>(int)$_POST['icu']
             ];
-            var_dump($data);
-            die();
             if($data['ppekits']==0&&$data['n95']==0&&$data['vtm']==0&&$data['ventilator']==0&&$data['patientbed']==0&&$data['quarantinebed']==0&&$data['icu']==0)
             {   
                 echo '<script>alert("Must enter a value for district");location="'.URLROOT.'/DistrictResources"</script>'; 
