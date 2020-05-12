@@ -37,7 +37,7 @@
                     switch($_SESSION['type']){
                         case 'statecontrolroom':
                             //go to state control room dashboard
-                            $location='AddUser'; //location variable contains Controller Name
+                            $location='StateResourcesMain'; //location variable contains Controller Name
                             break;
                         case 'districtauthority':
                             //go to district authority controller
