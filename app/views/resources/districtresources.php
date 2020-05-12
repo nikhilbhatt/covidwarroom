@@ -89,9 +89,9 @@ SEE the list which is not yet approved by the state  -->
                     <td><?php echo $result->ppekitsusedtoday;?></td>
                     <td><?php echo $result->ppekitsvacanttoday;?></td>
                     <?php else:?>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
                     <?php endif;?>    
                     <td><?php echo $result->ppekitsusedcumulative;?></td>
                     <td><?php echo $result->ppekitsvacantcumulative;?></td>
@@ -105,9 +105,9 @@ SEE the list which is not yet approved by the state  -->
                     <td><?php echo $result->vtmusedtoday;?></td>
                     <td><?php echo $result->vtmvacanttoday;?></td>
                     <?php else:?>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
                     <?php endif;?> 
                     <td><?php echo $result->vtmusedcumulative;?></td>
                     <td><?php echo $result->vtmvacantcumulative;?></td>
@@ -121,9 +121,9 @@ SEE the list which is not yet approved by the state  -->
                     <td><?php echo $result->n95usedtoday;?></td>
                     <td><?php echo $result->n95vacanttoday;?></td>
                     <?php else:?>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
                     <?php endif;?> 
                     <td><?php echo $result->n95usedcumulative;?></td>
                     <td><?php echo $result->n95vacantcumulative;?></td>
