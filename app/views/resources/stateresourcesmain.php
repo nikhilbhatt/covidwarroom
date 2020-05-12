@@ -2,7 +2,11 @@
 <!-- Distribute NEW PPE kits to state:-
 SEE the total PPE kits and thier availability in state
 SEE the list which is not yet approved by the state  -->
-<a href="<?php echo URLROOT;?>/AddUser" class="btn btn-success">Add User</a>
+<div class="justify-content-center text-center mt-3">
+<a href="<?php echo URLROOT;?>/AddUser" class="btn mt-3 btn-success">Add New District Authority</a>
+
+<a href="<?php echo URLROOT;?>/Logout" class="btn mt-3 btn-danger">Logout</a>
+</div>
 <div class="container">
     <div class="mt-4">
         <div md-5 mt-2 align="right">
@@ -121,7 +125,7 @@ SEE the list which is not yet approved by the state  -->
                     <td><?php echo $result->ppekitscumulative;?></td>
                     <td><?php echo $result->ppekitsusedcumulative;?></td>
                     <td><?php echo $result->ppekitsvacantcumulative;?></td>
-                    
+
                     <?php if(date("y-m-d",time())==date("y-m-d",strtotime($result->date))):?>
                     <td><?php echo $result->vtmaddedtoday;?></td>
                     <td><?php echo $result->vtmusedtoday;?></td>

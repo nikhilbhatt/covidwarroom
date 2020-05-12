@@ -2,9 +2,16 @@
 <!-- Distribute NEW PPE kits to state:-
 SEE the total PPE kits and thier availability in state
 SEE the list which is not yet approved by the state  -->
+
+<div class="justify-content-center text-center mt-3">
+<a href="<?php echo URLROOT;?>/AddUser" class="btn mt-3 btn-success">Add New District Used</a>
+
+<a href="<?php echo URLROOT;?>/Logout" class="btn mt-3 btn-danger">Logout</a>
+</div>
+
 <div class="container">
     <div class="mt-4">
-        <h4><?php echo $_SESSION['district'];?></h4>
+        <h4>Welcome <span class="text-danger"><?php echo ucwords($_SESSION['district']);?> </span>District Authority</h4>
         <div md-5 mt-2 align="right">
             <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#addkits"><i class="fa fa-plus"></i>Add New Kits</Button>
         </div>
