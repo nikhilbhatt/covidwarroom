@@ -45,7 +45,7 @@
                             break;
                         case 'districtuser':
                             //go to district user controller
-                            $location='Login';
+                            $location='UserResources';
                             break;                       
                         default:
                             //something went wrong or error
