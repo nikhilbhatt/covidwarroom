@@ -33,6 +33,13 @@
             require_once '../app/controllers/resourcescontroller/'.$this->currentController.'.php';
             unset($url[0]);
         }
+        else
+        {
+
+            $this->currentController=Login;
+            require_once '../app/controllers/authentication/'.$this->currentController.'.php';
+            unset($url[0]);
+        }
         $this->currentController=new $this->currentController;
 
         //now check for the second part of url 
