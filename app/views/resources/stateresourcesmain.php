@@ -4,7 +4,7 @@ SEE the total PPE kits and thier availability in state
 SEE the list which is not yet approved by the state  -->
 <div class="justify-content-center text-center mt-3">
 <a href="<?php echo URLROOT;?>/AddUser" class="btn mt-3 btn-success">Add New District Authority</a>
-
+<a href="<?php echo URLROOT;?>/ChangePassword" class="btn mt-3 btn-warning">Change Your Password</a>
 <a href="<?php echo URLROOT;?>/Logout" class="btn mt-3 btn-danger">Logout</a>
 </div>
 <div class="container">
