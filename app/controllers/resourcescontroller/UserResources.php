@@ -12,8 +12,10 @@ class UserResources extends Controller
 
     public function index()
     {
-        
+
+        $res=$this->userResourcesModel->getData();
         $data=[
+        'res'=>$res
         ];
         $this->views('resources/userresources',$data);
     } 
