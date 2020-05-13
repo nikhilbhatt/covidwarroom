@@ -1,13 +1,11 @@
 <?php require_once APPROOT . '/views/includes/header.php'; ?>
+<?php $page='stateresources';require_once APPROOT . '/views/includes/navbar.php'; ?>
 <!-- Distribute NEW PPE kits to state:-
 SEE the total PPE kits and thier availability in state
 SEE the list which is not yet approved by the state  -->
-<div class="justify-content-center text-center mt-3">
-<a href="<?php echo URLROOT;?>/AddUser" class="btn mt-3 btn-success">Add New District Authority</a>
-<a href="<?php echo URLROOT;?>/ChangePassword" class="btn mt-3 btn-warning">Change Your Password</a>
-<a href="<?php echo URLROOT;?>/Logout" class="btn mt-3 btn-danger">Logout</a>
-</div>
+
 <div class="container">
+    <h1 class="mt-5 text-center" style="font-weight:bold;"><strong>State COVID-19 Control Room Panel</strong></h1>
     <div class="mt-4">
         <div md-5 mt-2 align="right">
             <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#addkits"><i class="fa fa-plus"></i> Distribute NEW Kits</Button>

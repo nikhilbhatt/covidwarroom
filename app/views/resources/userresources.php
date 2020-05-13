@@ -1,4 +1,5 @@
 <?php require_once APPROOT . '/views/includes/header.php'; ?>
+<?php $page='userresources';require_once APPROOT . '/views/includes/navbar.php'; ?>
 <!-- Distribute NEW PPE kits to state:-
 SEE the total PPE kits and thier availability in state
 SEE the list which is not yet approved by the state  -->

@@ -1,5 +1,6 @@
 
 <?php require_once APPROOT . '/views/includes/header.php'; ?>
+<?php $page='changepassword';require_once APPROOT . '/views/includes/navbar.php'; ?>
 
 <div class="container mt-5  "align="center">
     <div class='text-center'>

@@ -1,4 +1,5 @@
 <?php require_once APPROOT.'/views/includes/header.php'?>
+<?php $page='adduser';require_once APPROOT . '/views/includes/navbar.php'; ?>
 <div class="container">
     <div class="mt-4">
         <div md-5 mt-2 align="right">
