@@ -16,7 +16,7 @@ class AuthenticationModel{
         $res=$this->db->single();
         if($this->db->rowcount()>0)
         {
-            if(PHP_SESSION_NONE)
+            if(session_status()==PHP_SESSION_NONE)
             {
                 session_start();
             }
