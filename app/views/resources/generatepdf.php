@@ -54,113 +54,119 @@
                     <tbody>
                     <?php $key=1;?>
                     <?php foreach($data['res'] as $result) : ?>
-                        <?php if($result->district==$_SESSION['district']):?>
+                        <?php $res=array(); if($result->district==$_SESSION['district']):?>
                         <?php if($data['ppekits']=='ppekits'):?>
                             <tr>
                                 <td scope="row"><?php echo $key++;?></td>
-                                <td scope="roe"><?php echo 'PPE Kits';?></td> 
+                                <td scope="row"><?php echo 'PPE Kits';array_push($res,'PPE Kits');?></td> 
                                 <?php if(date("yy-m-d",strtotime($result->date))==$data['date']):?>
-                                <td><?php echo $result->ppekitsaddedtoday;?></td>
-                                <td><?php echo $result->ppekitsusedtoday;?></td>
-                                <td><?php echo $result->ppekitsvacanttoday;?></td>
+                                <td><?php echo $result->ppekitsaddedtoday; array_push($res,$result->ppekitsaddedtoday);?></td>
+                                <td><?php echo $result->ppekitsusedtoday; array_push($res,$result->ppekitsusedtoday);?></td>
+                                <td><?php echo $result->ppekitsvacanttoday;array_push($res,$result->ppekitsvacanttoday);?></td>
                                 <?php else:?>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td>0 <?php array_push($res,0);?></td>
+                                <td>0 <?php array_push($res,0);?></td>
+                                <td>0 <?php array_push($res,0);?></td>
                                 <?php endif;?>    
-                                <td><?php echo $result->ppekitsusedcumulative;?></td>
-                                <td><?php echo $result->ppekitsvacantcumulative;?></td>
-                                <td><?php echo $result->ppekitscumulative;?></td>
+                                <td><?php echo $result->ppekitsusedcumulative;array_push($res,$result->ppekitsusedcumulative);?></td>
+                                <td><?php echo $result->ppekitsvacantcumulative;array_push($res,$result->ppekitsvacantcumulative);?></td>
+                                <td><?php echo $result->ppekitscumulative;array_push($res,$result->ppekitscumulative);?></td>
                             </tr>
                         <?php endif;?>
                         <?php if($data['vtm']=='vtm'):?>
                         <tr>
                             <td scope="row"><?php echo $key++;?></td>
-                            <td scope="row"><?php echo 'VTM';?></td> 
+                            <td scope="row"><?php echo 'VTM';array_push($res,'VTM');?></td> 
                             <?php if(date("Y-m-d",strtotime($result->date))==$data['date']):?>    
-                            <td><?php echo $result->vtmaddedtoday;?></td>
-                            <td><?php echo $result->vtmusedtoday;?></td>
-                            <td><?php echo $result->vtmvacanttoday;?></td>
+                            <td><?php echo $result->vtmaddedtoday;array_push($res,$result->vtmaddedtoday);?></td>
+                            <td><?php echo $result->vtmusedtoday;array_push($res,$result->vtmusedtoday);?></td>
+                            <td><?php echo $result->vtmvacanttoday;array_push($res,$result->vtmvacanttoday);?></td>
                             <?php else:?>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td>0<?php array_push($res,0);?></td>
+                            <td>0<?php array_push($res,0);?></td>
+                            <td>0<?php array_push($res,0);?></td>
                             <?php endif;?> 
-                            <td><?php echo $result->vtmusedcumulative;?></td>
-                            <td><?php echo $result->vtmvacantcumulative;?></td>
-                            <td><?php echo $result->vtmcumulative;?></td>
+                            <td><?php echo $result->vtmusedcumulative;array_push($res,$result->vtmusedcumulative);?></td>
+                            <td><?php echo $result->vtmvacantcumulative;array_push($res,$result->vtmvacantcumulative);?></td>
+                            <td><?php echo $result->vtmcumulative;array_push($res,$result->vtmcumulative);?></td>
                         </tr>
                         <?php endif;?>
                         <?php if($data['n95']=='n95'):?>
                         <tr>
                             <td scope="row"><?php echo $key++;?></td>
-                            <td scope="row"><?php echo 'n95';?></td>  
+                            <td scope="row"><?php echo 'n95';array_push($res,'n95');?></td>  
                             <?php if(date("Y-m-d",strtotime($result->date))==$data['date']):?>   
-                            <td><?php echo $result->n95addedtoday;?></td>
-                            <td><?php echo $result->n95usedtoday;?></td>
-                            <td><?php echo $result->n95vacanttoday;?></td>
+                            <td><?php echo $result->n95addedtoday;array_push($res,$result->n95addedtoday);?></td>
+                            <td><?php echo $result->n95usedtoday;array_push($res,$result->n95usedtoday);?></td>
+                            <td><?php echo $result->n95vacanttoday;array_push($res,$result->n95vacanttoday);?></td>
                             <?php else:?>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td>0<?php array_push($res,0);?></td>
+                            <td>0<?php array_push($res,0);?></td>
+                            <td>0<?php array_push($res,0);?></td>
                             <?php endif;?> 
-                            <td><?php echo $result->n95usedcumulative;?></td>
-                            <td><?php echo $result->n95vacantcumulative;?></td>
-                            <td><?php echo $result->n95cumulative;?></td>
+                            <td><?php echo $result->n95usedcumulative;array_push($res,$result->n95usedcumulative);?></td>
+                            <td><?php echo $result->n95vacantcumulative;array_push($res,$result->n95vacantcumulative);?></td>
+                            <td><?php echo $result->n95cumulative;array_push($res,$result->n95cumulative);?></td>
                         </tr>
                         <?php endif;?>
                         <?php if($data['ventilator']=='ventilator'):?>
                         <tr>
                             <td scope="row"><?php echo $key++;?></td>
-                            <td scope="row"><?php echo 'Ventilators';?></td>     
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td><?php echo $result->ventilatorusedcumulative;?></td>
-                            <td><?php echo $result->ventilatorvacantcumulative;?></td>
-                            <td><?php echo $result->ventilatorcumulative;?></td>
+                            <td scope="row"><?php echo 'Ventilators';array_push($res,'Ventilators');?></td>     
+                            <td>-<?php array_push($res,'-');?></td>
+                            <td>-<?php array_push($res,'-');?></td>
+                            <td>-<?php array_push($res,'-');?></td>
+                            <td><?php echo $result->ventilatorusedcumulative;array_push($res,$result->ventilatorusedcumulative);?></td>
+                            <td><?php echo $result->ventilatorvacantcumulative;array_push($res,$result->ventilatorvacantcumulative);?></td>
+                            <td><?php echo $result->ventilatorcumulative;array_push($res,$result->ventilatorcumulative);?></td>
                         </tr>
                         <?php endif;?>
                         <?php if($data['patientbed']=='patientbed'):?>
                         <tr>
                             <td scope="row"><?php echo $key++;?></td>
-                            <td scope="roe"><?php echo 'Patient Bed';?></td>     
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td><?php echo $result->patientbedusedcumulative;?></td>
-                            <td><?php echo $result->patientbedvacantcumulative;?></td>
-                            <td><?php echo $result->patientbedcumulative;?></td>
+                            <td scope="roe"><?php echo 'Patient Bed';array_push($res,'Patient Bed');?></td>     
+                            <td>-<?php array_push($res,'-');?></td>
+                            <td>-<?php array_push($res,'-');?></td>
+                            <td>-<?php array_push($res,'-');?></td>
+                            <td><?php echo $result->patientbedusedcumulative;array_push($res,$result->patientbedusedcumulative);?></td>
+                            <td><?php echo $result->patientbedvacantcumulative;array_push($res,$result->patientbedvacantcumulative);?></td>
+                            <td><?php echo $result->patientbedcumulative;array_push($res,$result->patientbedcumulative);?></td>
                         </tr>
                         <tr>
                         <?php endif;?>
                         <?php if($data['quarantinebed']=='quarantinebed'):?>
                             <td scope="row"><?php echo $key++;?></td>
-                            <td scope="roe"><?php echo 'Quarantine Bed';?></td>     
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td><?php echo $result->quarantinebedusedcumulative;?></td>
-                            <td><?php echo $result->quarantinebedvacantcumulative;?></td>
-                            <td><?php echo $result->quarantinebedcumulative;?></td>
+                            <td scope="roe"><?php echo 'Quarantine Bed'; array_push($res,'Quarantine Bed');?></td>     
+                            <td>-<?php array_push($res,'-');?></td>
+                            <td>-<?php array_push($res,'-');?></td>
+                            <td>-<?php array_push($res,'-');?></td>
+                            <td><?php echo $result->quarantinebedusedcumulative;array_push($res,$result->quarantinebedusedcumulative);?></td>
+                            <td><?php echo $result->quarantinebedvacantcumulative;array_push($res,$result->quarantinebedvacantcumulative);?></td>
+                            <td><?php echo $result->quarantinebedcumulative;array_push($res,$result->quarantinebedcumulative);?></td>
                         </tr>
                         <?php endif;?>
                         <?php if($data['icu']=='icu'):?>
                         <tr>
                             <td scope="row"><?php echo $key++;?></td>
-                            <td scope="roe"><?php echo 'ICU Bed';?></td>     
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td><?php echo $result->icuusedcumulative;?></td>
-                            <td><?php echo $result->icuvacantcumulative;?></td>
-                            <td><?php echo $result->icucumulative;?></td>
+                            <td scope="roe"><?php echo 'ICU Bed'; array_push($res,'ICU Bed');?></td>     
+                            <td>-<?php array_push($res,'-');?></td>
+                            <td>-<?php array_push($res,'-');?></td>
+                            <td>-<?php array_push($res,'-');?></td>
+                            <td><?php echo $result->icuusedcumulative;array_push($res,$result->icuusedcumulative);?></td>
+                            <td><?php echo $result->icuvacantcumulative;array_push($res,$result->icuvacantcumulative);?></td>
+                            <td><?php echo $result->icucumulative;array_push($res,$result->icucumulative);?></td>
                         </tr>
                         <?php endif;?>
                        <?php endif;?>
                     <?php endforeach; ?>
                  </tbody>
                 </table>
+                <form action="<?php echo URLROOT;?>/GeneratePdf/generate" method="POST">
+                        
+                       <?php $postvalue = base64_encode(serialize($res)); ?>
+                        <input type="hidden" name="result" value="<?php echo $postvalue; ?>">
+                       <input type="submit" value="View Data in Pdf" class="btn btn-success">
+                </form>
              <?php endif;?>
             </div>
     </div>
