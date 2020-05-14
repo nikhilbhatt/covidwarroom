@@ -9,7 +9,7 @@
         <form action="<?php echo URLROOT;?>/GenerateStateReport" method="post">
                 <div class="form-group">
                 <label for="date">Date: <sup>*</sup></label>
-                <input type="text" name="date" id="datepicker" class="form-control form-control-lg <?php echo (!empty($data['date_err']))? 'is-invalid' : '';?>"
+                <input type="text" name="date" id="datepicker"  autocomplete="off"class="form-control form-control-lg <?php echo (!empty($data['date_err']))? 'is-invalid' : '';?>"
                 value="<?php echo $data['date'];?>" >
                 <span class="invalid-feedback"><?php echo $data['date_err'];?> </span>
                 </div>
@@ -76,7 +76,7 @@
                             <tr>
                                 <td scope="row"><?php echo $key++;?></td>
                                 <td scope="roe"><?php echo 'PPE Kits';?></td> 
-                                <?php if(date("Y-m-d",strtotime($result->date))==date("Y-m-d",time())):?>
+                                <?php if(date("Y-m-d",strtotime($result->date))==$data['date']):?>
                                 <td><?php echo $result->ppekitsaddedtoday;?></td>
                                 <td><?php echo $result->ppekitsusedtoday;?></td>
                                 <td><?php echo $result->ppekitsvacanttoday;?></td>
@@ -94,7 +94,7 @@
                         <tr>
                             <td scope="row"><?php echo $key++;?></td>
                             <td scope="row"><?php echo 'VTM';?></td> 
-                            <?php if(date("Y-m-d",strtotime($result->date))==date("Y-m-d",time())):?>    
+                            <?php if(date("Y-m-d",strtotime($result->date))==$data['date']):?>    
                             <td><?php echo $result->vtmaddedtoday;?></td>
                             <td><?php echo $result->vtmusedtoday;?></td>
                             <td><?php echo $result->vtmvacanttoday;?></td>
@@ -112,7 +112,7 @@
                         <tr>
                             <td scope="row"><?php echo $key++;?></td>
                             <td scope="row"><?php echo 'n95';?></td>  
-                            <?php if(date("Y-m-d",strtotime($result->date))==date("Y-m-d",time())):?>   
+                            <?php if(date("Y-m-d",strtotime($result->date))==$data['date']):?>   
                             <td><?php echo $result->n95addedtoday;?></td>
                             <td><?php echo $result->n95usedtoday;?></td>
                             <td><?php echo $result->n95vacanttoday;?></td>

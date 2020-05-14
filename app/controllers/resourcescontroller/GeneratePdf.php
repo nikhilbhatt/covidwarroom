@@ -44,7 +44,16 @@ class GeneratePdf extends Controller{
         {
             $res='';
             $data=[
-                'res'=>$res
+                'res'=>$res,
+                'date'=>'',
+                'ppekits'=>'',
+                'n95'=>'',
+                'vtm'=>'',
+                'ventilator'=>'',
+                'patientbed'=>'',
+                'quarantinebed'=>'',
+                'icu'=>'',
+                'date_err'=>''
             ];
             $this->views('resources/generatepdf',$data);
         }
