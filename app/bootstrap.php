@@ -6,6 +6,8 @@
 // require_once 'libraries/Database.php';
 require_once 'config/config.php';
 require_once 'helpers/session_helper.php';
+require_once dirname(dirname(__FILE__)).'/public/tcpdf/tcpdf.php';
+require_once dirname(dirname(__FILE__)).'/public/tcpdf/config/tcpdf_config.php';
 
 //add autoloader file here so that all the required file get automatically loaded.
 spl_autoload_register(function($className)
