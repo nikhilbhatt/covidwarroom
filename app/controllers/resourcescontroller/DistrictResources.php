@@ -14,14 +14,17 @@ class DistrictResources extends Controller
     {
         $res=$this->stateResourcesModel->getStateData();
         $districtres=$this->stateResourcesModel->getDistrictResources();
-        // echo '<pre>';
-        // var_dump($res);
-        // var_dump($districtres);
-        // echo '</pre>';
-        // die();
         $data=[
             'res'=>$res,
-            'districtres'=>$districtres
+            'districtres'=>$districtres,
+            'district'=>'',
+            'ppekits'=>'',
+            'n95'=>'',
+            'vtm'=>'',
+            'ventilator'=>'',
+            'patientbed'=>'',
+            'quarantinebed'=>'',
+            'icu'=>''
         ];
         $this->views('resources/districtresources',$data);
     }

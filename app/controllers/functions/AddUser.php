@@ -15,7 +15,13 @@
             $res=$this->authenticationModel->getUsers();
             $data=
             [
-                'res'=>$res
+                'res'=>$res,
+                'name'=>'',
+                'username'=>'',
+                'password'=>'',
+                'type'=>'',
+                'tehsil'=>'',
+                'district'=>'',
             ];
             $this->views('functions/adduser',$data);
         }
