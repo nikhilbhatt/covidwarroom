@@ -119,27 +119,55 @@ class GeneratePdf extends Controller{
         // Add a page
         // This method has several options, check the source code documentation for more information.
         $pdf->AddPage();
+        $district=ucwords($_SESSION['district']);
+        $date=$postvalue[0];
+        $html="<h2>District:-$district</h2>
+            <h3>Date:- $date</h3>
+        <br>";
+        $pdf->writeHTML($html, true, false, true, false, '');
+
+        $header=array('ITEM Name','Added Today','Used Today','Vacant Today','Used Cumulative','Vacant Cumulative','Total Cumulative');
 
         // set text shadow effect
-        $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
-        ob_end_clean();
-        // Set some content to print
-        $html = <<<EOD
-<h1>Welcome to <a href="http://www.tcpdf.org" style="text-decoration:none;background-color:#CC0000;color:black;">&nbsp;<span style="color:black;">TC</span><span style="color:white;">PDF</span>&nbsp;</a>!</h1>
-<i>This is the first example of TCPDF library.</i>
-<p>This text is printed using the <i>writeHTMLCell()</i> method but you can also use: <i>Multicell(), writeHTML(), Write(), Cell() and Text()</i>.</p>
-<p>Please check the source code documentation and other examples for further information.</p>
-<p style="color:#CC0000;">TO IMPROVE AND EXPAND TCPDF I NEED YOUR SUPPORT, PLEASE <a href="http://sourceforge.net/donate/index.php?group_id=128076">MAKE A DONATION!</a></p>
-EOD;
-
-        // Print text using writeHTMLCell()
-        $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
-
-        // ---------------------------------------------------------
-
+        $pdf->SetFillColor(255, 0, 0);
+        $pdf->SetTextColor(255);
+        $pdf->SetDrawColor(128, 0, 0);
+        $pdf->SetLineWidth(0.4);
+        $pdf->SetFont('', 'N');
+        // Header
+        $w = array(40, 19,18, 20,31,31,31);
+        $num_headers = count($header);
+        for($i = 0; $i < $num_headers; ++$i) {
+            $pdf->MultiCell($w[$i], 15, $header[$i], 1,'C', 1,0,'','',true);
+        }
+        $pdf->Ln();
+        // Color and font restoration
+        $pdf->SetFillColor(224, 235, 255);
+        $pdf->SetTextColor(0);
+        $pdf->SetFont('');
+        // Data
+        $fill = 0;
+        for($i=1;$i<count($postvalue);$i++) {
+            $pdf->Cell($w[0], 10, $postvalue[$i], 'LR', 0, 'L', $fill);
+            $i=$i+1;
+            $pdf->Cell($w[1], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
+            $i=$i+1;
+            $pdf->Cell($w[2], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
+            $i=$i+1;
+            $pdf->Cell($w[3], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
+            $i=$i+1;
+            $pdf->Cell($w[4], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
+            $i=$i+1;
+            $pdf->Cell($w[5], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
+            $i=$i+1;
+            $pdf->Cell($w[6], 10,$postvalue[$i], 'LR', 0, 'R', $fill);
+            $pdf->Ln();
+            $fill=!$fill;
+        }
+        $pdf->Cell(array_sum($w), 0, '', 'T');
         // Close and output PDF document
         // This method has several options, check the source code documentation for more information.
-        // ob_end_clean();
+        ob_end_clean();
         $pdf->Output('example_001.pdf', 'I');
     }
 }

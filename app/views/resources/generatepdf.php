@@ -54,7 +54,7 @@
                     <tbody>
                     <?php $key=1;?>
                     <?php foreach($data['res'] as $result) : ?>
-                        <?php $res=array(); if($result->district==$_SESSION['district']):?>
+                        <?php $res=array(); array_push($res,$data['date']);if($result->district==$_SESSION['district']):?>
                         <?php if($data['ppekits']=='ppekits'):?>
                             <tr>
                                 <td scope="row"><?php echo $key++;?></td>
