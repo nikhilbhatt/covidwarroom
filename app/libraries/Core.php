@@ -36,7 +36,7 @@
         else
         {
 
-            $this->currentController=Login;
+            $this->currentController='Login';
             require_once '../app/controllers/authentication/'.$this->currentController.'.php';
             unset($url[0]);
         }
