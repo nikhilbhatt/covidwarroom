@@ -34,10 +34,8 @@
                     <input type="submit" value="Get Record" class="btn btn-success">
                 </div>
         </form>
+            <?php if(!empty($data['res'])):?>
             <h2 class="text-center mt-5"> <?php echo $data['date'];?> Report</h2><br>
-            <?php if(empty($data['res'])):?>
-                <h4> No Record Found</h4>
-            <?php else: ?>
                 <table id="tableid" class="table table-striped table-hover mb-5" >
                     <thead>
                     <tr>
