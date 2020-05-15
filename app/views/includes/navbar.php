@@ -9,7 +9,7 @@
     <?php if(session_status()==PHP_SESSION_NONE){session_start();}?>
     <?php if($_SESSION['type']=='statecontrolroom'):?>
         <li class="ml-3 nav-item <?php if($page=='stateresources'){echo 'active';}?>"><a class="nav-link" href="<?php echo URLROOT;?>/StateResourcesMain"><i class="fa fa-home"></i> Home</a></li>
-        <li class="ml-3 nav-item <?php if($page=='generatepdf'){echo 'active';}?>"><a class="nav-link" href="<?php echo URLROOT;?>/GenerateStateReport"><i class="fa fa-home"></i> Generate Report</a></li>
+        <li class="ml-3 nav-item <?php if($page=='generatepdf'){echo 'active';}?>"><a class="nav-link" href="<?php echo URLROOT;?>/GenerateStateReport"><i class="fa fa-file"></i> Generate Report</a></li>
         <li class="ml-3 nav-item <?php if($page=='adduser'){echo 'active';}?>"><a class="nav-link" href="<?php echo URLROOT;?>/AddUser"><i class="fa fa-user-plus"></i> Add New District Authority User</a></li>
         <li class="ml-3 nav-item <?php if($page=='changepassword'){echo 'active';}?>"><a class="nav-link" href="<?php echo URLROOT;?>/ChangePassword"><i class="fa fa-lock"></i> Change Your Password</a></li>
       <?php elseif($_SESSION['type']=='districtauthority'):?>
