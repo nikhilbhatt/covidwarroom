@@ -163,7 +163,7 @@
                         
                        <?php $postvalue = base64_encode(serialize($res)); ?>
                         <input type="hidden" name="result" value="<?php echo $postvalue; ?>">
-                       <input type="submit" value="View Data in Pdf" class="btn btn-success">
+                       <input type="submit" value="Download as Pdf" class="btn btn-success">
                 </form>
              <?php endif;?>
             </div>

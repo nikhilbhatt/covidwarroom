@@ -50,11 +50,6 @@ class StateResourcesModel{
         $this->db->query('SELECT * FROM approvedresources WHERE date IN(SELECT MAX(date) FROM approvedresources WHERE district=:district) AND district=:district');
         $this->db->bindvalues(':district',$_SESSION['district']);
         $result=$this->db->single();
-        // echo '<pre>';
-        // var_dump($result);
-        // echo '</pre>';
-        // die();
-        
         $this->db->query('SELECT * FROM approvedresources WHERE date(date)=date(now()) AND district=:district');
         $this->db->bindvalues(':district',$_SESSION['district']);
         $res=$this->db->single();

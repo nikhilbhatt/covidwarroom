@@ -24,7 +24,8 @@ class GeneratePdf extends Controller{
                 'quarantinebed'=>$_POST['quarantinebed'],
                 'icu'=>$_POST['icu'],
                 'date_err'=>'',
-                'res'=>''
+                'res'=>'',
+                'districtres'=>''
             ];
             if(empty($data['date']))
             {
@@ -36,7 +37,9 @@ class GeneratePdf extends Controller{
             if(empty($data['date_err']))
             {
                 $res=$this->generatePdf->getFilteredData($data);
+                $districtres=$this->generatePdf->getLatestData($data);
                 $data['res']=$res;
+                $data['districtres']=$districtres;
                 $this->views('resources/generatepdf',$data);
             }
             else
@@ -168,7 +171,7 @@ class GeneratePdf extends Controller{
         // Close and output PDF document
         // This method has several options, check the source code documentation for more information.
         ob_end_clean();
-        $pdf->Output('example_001.pdf', 'I');
+        $pdf->Output('example_001.pdf', 'D');
     }
 }
 
