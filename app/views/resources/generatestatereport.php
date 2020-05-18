@@ -28,7 +28,8 @@
                     <input type="checkbox" id="quarantinebed" name="quarantinebed" value="quarantinebed" <?php if($data['quarantinebed']=='quarantinebed') echo 'checked';?>>
                     <label for="quarantinebed">Quarantine Bed</label>
                     <input type="checkbox" id="icu" name="icu" value="icu" <?php if($data['icu']=='icu') echo 'checked';?>>
-                    <label for="icu">ICU</label>
+                    <label for="icu">ICU</label><br>
+                    <span class="text-danger"><?php echo $data['kits_err'];?> </span>
                 </div>
                 <div class="form-group">
                     <label for="district">District<sup class="text-danger">*</sup></label>
@@ -182,8 +183,17 @@
                         <input type="hidden" name="result" value="<?php echo $postvalue; ?>">
                        <input type="submit" value="Download Pdf" class="btn btn-success">
                 </form>
-             <?php endif;?>
-            </div>
+                <?php elseif(!empty($data['date'])&&empty($data['date_err'])&&empty($data['kits_err'])):?>
+                <br>
+                <h5 class="text-danger"> OOPS! No Record Available for above applied filter</h5>
+                <form action="<?php echo URLROOT;?>/GenerateStateReport/generate" method="POST">
+                       <?php $res=array(); array_push($res,$data['district']); $postvalue = base64_encode(serialize($res)); ?>
+                        <input type="hidden" name="result" value="<?php echo $postvalue; ?>">
+                       <input type="submit" value="Download Last Recent updated pdf" class="btn btn-success">
+                </form>
+
+                <?php endif;?>
+            </div>  
     </div>
 </div>
 

@@ -33,12 +33,11 @@ class GeneratePdfModel{
         return $res;
     }
 
-    public function getLatestStateData($data)
+    public function getLatestStateData($district)
     {
         $this->db->query('SELECT * FROM approvedresources WHERE date IN(SELECT MAX(date) from approvedresources WHERE district=:district) AND district=:district');
-        $this->db->bindvalues(':date',$data['date']);
-        $this->db->bindvalues(':district',$data['district']);
-        $res=$this->db->resultSet();
+        $this->db->bindvalues(':district',$district);
+        $res=$this->db->single();
         return $res;
     }
     
