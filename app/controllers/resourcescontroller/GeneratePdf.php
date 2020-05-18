@@ -68,6 +68,8 @@ class GeneratePdf extends Controller{
 
     public function generate()
     {
+        $latestdata=$this->generatePdf->getLatestData();
+
         $postvalue = unserialize(base64_decode($_POST['result']));
         // var_dump($postvalue);
         // die();
@@ -170,8 +172,77 @@ class GeneratePdf extends Controller{
         $pdf->Cell(array_sum($w), 0, '', 'T');
         // Close and output PDF document
         // This method has several options, check the source code documentation for more information.
+
+
+
+        /*
+            WORK FROM HERE
+        */
+        $html="<br><h2>Total Available kits in $district till date</h2>
+        ";
+        $pdf->writeHTML($html, true, false, true, false, '');
+
+        $header=array('ITEM Name','Used Cumulative','Vacant Cumulative','Total Cumulative');
+
+        // set text shadow effect
+        $pdf->SetFillColor(255, 0, 0);
+        $pdf->SetTextColor(255);
+        $pdf->SetDrawColor(128, 0, 0);
+        $pdf->SetLineWidth(0.4);
+        $pdf->SetFont('', 'N');
+        // Header
+        $w = array( 50, 45,45,45);
+        $num_headers = count($header);
+        for($i = 0; $i < $num_headers; ++$i) {
+            $pdf->MultiCell($w[$i], 15, $header[$i], 1,'C', 1,0,'','',true);
+        }
+        $pdf->Ln();
+        // Color and font restoration
+        $pdf->SetFillColor(224, 235, 255);
+        $pdf->SetTextColor(0);
+        $pdf->SetFont('');
+
+        $pdf->Cell($w[0], 10, 'PPE Kits', 'LR', 0, 'L', 0);
+        $pdf->Cell($w[1], 10, $latestdata->ppekitsusedcumulative, 'LR', 0, 'R', 0);
+        $pdf->Cell($w[2], 10, $latestdata->ppekitsvacantcumulative, 'LR', 0, 'R', 0);
+        $pdf->Cell($w[3], 10, $latestdata->ppekitscumulative, 'LR', 0, 'R', 0);
+        $pdf->Ln();
+        $pdf->Cell($w[0], 10, 'N95 Masks', 'LR', 0, 'L', 1);
+        $pdf->Cell($w[1], 10, $latestdata->n95usedcumulative, 'LR', 0, 'R', 1);
+        $pdf->Cell($w[2], 10, $latestdata->n95vacantcumulative, 'LR', 0, 'R', 1);
+        $pdf->Cell($w[3], 10, $latestdata->n95cumulative, 'LR', 0, 'R', 1);
+        $pdf->Ln();
+        $pdf->Cell($w[0], 10, 'VTM', 'LR', 0, 'L', 0);
+        $pdf->Cell($w[1], 10, $latestdata->vtmusedcumulative, 'LR', 0, 'R', 0);
+        $pdf->Cell($w[2], 10, $latestdata->vtmvacantcumulative, 'LR', 0, 'R', 0);
+        $pdf->Cell($w[3], 10, $latestdata->vtmcumulative, 'LR', 0, 'R', 0);
+        $pdf->Ln();
+        $pdf->Cell($w[0], 10, 'Ventilators', 'LR', 0, 'L', 1);
+        $pdf->Cell($w[1], 10, $latestdata->ventilatorusedcumulative, 'LR', 0, 'R', 1);
+        $pdf->Cell($w[2], 10, $latestdata->ventilatorvacantcumulative, 'LR', 0, 'R', 1);
+        $pdf->Cell($w[3], 10, $latestdata->ventilatorcumulative, 'LR', 0, 'R', 1);
+        $pdf->Ln();
+        $pdf->Cell($w[0], 10, 'Patient Beds', 'LR', 0, 'L', 0);
+        $pdf->Cell($w[1], 10, $latestdata->patientbedusedcumulative, 'LR', 0, 'R', 0);
+        $pdf->Cell($w[2], 10, $latestdata->patientbedvacantcumulative, 'LR', 0, 'R', 0);
+        $pdf->Cell($w[3], 10, $latestdata->patientbedcumulative, 'LR', 0, 'R', 0);
+        $pdf->Ln();
+        $pdf->Cell($w[0], 10, 'Quarantine Beds', 'LR', 0, 'L', 1);
+        $pdf->Cell($w[1], 10, $latestdata->quarantinebedusedcumulative, 'LR', 0, 'R', 1);
+        $pdf->Cell($w[2], 10, $latestdata->quarantinebedvacantcumulative, 'LR', 0, 'R', 1);
+        $pdf->Cell($w[3], 10, $latestdata->quarantinebedcumulative, 'LR', 0, 'R', 1);
+        $pdf->Ln();
+        $pdf->Cell($w[0], 10, 'ICU Beds', 'LR', 0, 'L', 0);
+        $pdf->Cell($w[1], 10, $latestdata->icuusedcumulative, 'LR', 0, 'R', 0);
+        $pdf->Cell($w[2], 10, $latestdata->icuvacantcumulative, 'LR', 0, 'R', 0);
+        $pdf->Cell($w[3], 10, $latestdata->icucumulative, 'LR', 0, 'R', 0);
+        $pdf->Ln();
+        $pdf->Cell(array_sum($w), 0, '', 'T');
+
+
+
         ob_end_clean();
-        $pdf->Output('example_001.pdf', 'D');
+        $pdf->Output('districtdata.pdf', 'D');
     }
 }
 
