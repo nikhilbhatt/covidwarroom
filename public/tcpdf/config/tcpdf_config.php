@@ -109,6 +109,7 @@ define ('PDF_AUTHOR', 'Uttarakhand State Control Room');
 /**
  * Header title.
  */
+$time=date(" h:i:sa  d-m-yy",time());
 define ('PDF_HEADER_TITLE', 'Daily Resources Report');
 
 /**
@@ -120,19 +121,19 @@ if(session_status()==PHP_SESSION_NONE)
 }
 if($_SESSION['type']=='statecontrolroom')
 {
-    define ('PDF_HEADER_STRING', "By Uttarakhand State Control Room");
+    define ('PDF_HEADER_STRING', "By Uttarakhand State Control Room at ".$time);
 }
 elseif($_SESSION['type']=='districtauthority')
 {
-    define ('PDF_HEADER_STRING', "By ".ucwords($_SESSION['district'])." District Authority");
+    define ('PDF_HEADER_STRING', "By ".ucwords($_SESSION['district'])." District Authority at ".$time);
 }
 elseif($_SESSION['type']=='districtuser')
 {
-    define ('PDF_HEADER_STRING', "By ".ucwords($_SESSION['district'])." District Fascility");
+    define ('PDF_HEADER_STRING', "By ".ucwords($_SESSION['district'])." District Fascility at ".$time);
 }
 else
 {
-    define ('PDF_HEADER_STRING', "By random user");
+    define ('PDF_HEADER_STRING', "By random user at ".$time);
 }
 
 /**
