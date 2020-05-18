@@ -165,7 +165,15 @@
                         <input type="hidden" name="result" value="<?php echo $postvalue; ?>">
                        <input type="submit" value="Download as Pdf" class="btn btn-success">
                 </form>
-             <?php endif;?>
+            <?php elseif(!empty($data['date'])):?>
+                <br>
+                <h5>No Record Available for above filter</h5>
+                <form action="<?php echo URLROOT;?>/GeneratePdf/generate" method="POST">
+                       <?php $postvalue = base64_encode(serialize($res)); ?>
+                        <input type="hidden" name="result" value="<?php echo $postvalue; ?>">
+                       <input type="submit" value="Download Last Recent updated data" class="btn btn-success">
+                </form>
+            <?php endif;?>
             </div>
     </div>
 </div>

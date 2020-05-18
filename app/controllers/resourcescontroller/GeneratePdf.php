@@ -37,9 +37,7 @@ class GeneratePdf extends Controller{
             if(empty($data['date_err']))
             {
                 $res=$this->generatePdf->getFilteredData($data);
-                $districtres=$this->generatePdf->getLatestData($data);
                 $data['res']=$res;
-                $data['districtres']=$districtres;
                 $this->views('resources/generatepdf',$data);
             }
             else
@@ -125,54 +123,56 @@ class GeneratePdf extends Controller{
         // This method has several options, check the source code documentation for more information.
         $pdf->AddPage();
         $district=ucwords($_SESSION['district']);
-        $date=$postvalue[0];
-        $html="<h2>District:-$district</h2>
-            <h3>Date:- $date</h3>
-        <br>";
-        $pdf->writeHTML($html, true, false, true, false, '');
+        if(!empty($postvalue))
+        {
+                $date=$postvalue[0];
+                $html="<h2>District:-$district</h2>
+                    <h3>Date:- $date</h3>
+                <br>";
+                $pdf->writeHTML($html, true, false, true, false, '');
 
-        $header=array('ITEM Name','Added Today','Used Today','Vacant Today','Used Cumulative','Vacant Cumulative','Total Cumulative');
+                $header=array('ITEM Name','Added Today','Used Today','Vacant Today','Used Cumulative','Vacant Cumulative','Total Cumulative');
 
-        // set text shadow effect
-        $pdf->SetFillColor(255, 0, 0);
-        $pdf->SetTextColor(255);
-        $pdf->SetDrawColor(128, 0, 0);
-        $pdf->SetLineWidth(0.4);
-        $pdf->SetFont('', 'N');
-        // Header
-        $w = array(40, 19,18, 20,31,31,31);
-        $num_headers = count($header);
-        for($i = 0; $i < $num_headers; ++$i) {
-            $pdf->MultiCell($w[$i], 15, $header[$i], 1,'C', 1,0,'','',true);
+                // set text shadow effect
+                $pdf->SetFillColor(255, 0, 0);
+                $pdf->SetTextColor(255);
+                $pdf->SetDrawColor(128, 0, 0);
+                $pdf->SetLineWidth(0.4);
+                $pdf->SetFont('', 'N');
+                // Header
+                $w = array(40, 19,18, 20,31,31,31);
+                $num_headers = count($header);
+                for($i = 0; $i < $num_headers; ++$i) {
+                    $pdf->MultiCell($w[$i], 15, $header[$i], 1,'C', 1,0,'','',true);
+                }
+                $pdf->Ln();
+                // Color and font restoration
+                $pdf->SetFillColor(224, 235, 255);
+                $pdf->SetTextColor(0);
+                $pdf->SetFont('');
+                // Data
+                $fill = 0;
+                for($i=1;$i<count($postvalue);$i++) {
+                    $pdf->Cell($w[0], 10, $postvalue[$i], 'LR', 0, 'L', $fill);
+                    $i=$i+1;
+                    $pdf->Cell($w[1], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
+                    $i=$i+1;
+                    $pdf->Cell($w[2], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
+                    $i=$i+1;
+                    $pdf->Cell($w[3], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
+                    $i=$i+1;
+                    $pdf->Cell($w[4], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
+                    $i=$i+1;
+                    $pdf->Cell($w[5], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
+                    $i=$i+1;
+                    $pdf->Cell($w[6], 10,$postvalue[$i], 'LR', 0, 'R', $fill);
+                    $pdf->Ln();
+                    $fill=!$fill;
+                }
+                $pdf->Cell(array_sum($w), 0, '', 'T');
+                // Close and output PDF document
+                // This method has several options, check the source code documentation for more information.
         }
-        $pdf->Ln();
-        // Color and font restoration
-        $pdf->SetFillColor(224, 235, 255);
-        $pdf->SetTextColor(0);
-        $pdf->SetFont('');
-        // Data
-        $fill = 0;
-        for($i=1;$i<count($postvalue);$i++) {
-            $pdf->Cell($w[0], 10, $postvalue[$i], 'LR', 0, 'L', $fill);
-            $i=$i+1;
-            $pdf->Cell($w[1], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
-            $i=$i+1;
-            $pdf->Cell($w[2], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
-            $i=$i+1;
-            $pdf->Cell($w[3], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
-            $i=$i+1;
-            $pdf->Cell($w[4], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
-            $i=$i+1;
-            $pdf->Cell($w[5], 10, $postvalue[$i], 'LR', 0, 'R', $fill);
-            $i=$i+1;
-            $pdf->Cell($w[6], 10,$postvalue[$i], 'LR', 0, 'R', $fill);
-            $pdf->Ln();
-            $fill=!$fill;
-        }
-        $pdf->Cell(array_sum($w), 0, '', 'T');
-        // Close and output PDF document
-        // This method has several options, check the source code documentation for more information.
-
 
 
         /*
