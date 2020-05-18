@@ -4,6 +4,11 @@
 <div class="container">
     <h1 class="mt-5 text-center" style="font-weight:bold;"><strong>Generate Report</strong></h1>
     <div class="mt-4">
+                <form action="<?php echo URLROOT;?>/GeneratePdf/generate" method="POST" align="right">
+                       <?php $res=array(); $postvalue = base64_encode(serialize($res)); ?>
+                        <input type="hidden" name="result" value="<?php echo $postvalue; ?>">
+                       <input type="submit" value="Download Latest data" class="mb-2 btn btn-primary">
+                </form>
         <div class="card card-body bg-light md-5 mb-5 table-responsive-md">
         <h5>Apply Filter</h5>
         <form action="<?php echo URLROOT;?>/GeneratePdf" method="post">
@@ -29,7 +34,10 @@
                     <label for="quarantinebed">Quarantine Bed</label>
                     <input type="checkbox" id="icu" name="icu" value="icu" <?php if($data['icu']=='icu') echo 'checked';?>>
                     <label for="icu">ICU</label>
+                    <br>
+                    <span class="text-danger"><?php echo $data['kits_err'];?> </span>
                 </div>
+
                 <div >
                     <input type="submit" value="Get Record" class="btn btn-success">
                 </div>
@@ -165,14 +173,9 @@
                         <input type="hidden" name="result" value="<?php echo $postvalue; ?>">
                        <input type="submit" value="Download as Pdf" class="btn btn-success">
                 </form>
-            <?php elseif(!empty($data['date'])):?>
+            <?php elseif(!empty($data['date'])&&empty($data['date_err'])&&empty($data['kits_err'])):?>
                 <br>
-                <h5>No Record Available for above filter</h5>
-                <form action="<?php echo URLROOT;?>/GeneratePdf/generate" method="POST">
-                       <?php $postvalue = base64_encode(serialize($res)); ?>
-                        <input type="hidden" name="result" value="<?php echo $postvalue; ?>">
-                       <input type="submit" value="Download Last Recent updated data" class="btn btn-success">
-                </form>
+                <h5 class="text-danger"> OOPS! No Record Available for above applied filter</h5>
             <?php endif;?>
             </div>
     </div>

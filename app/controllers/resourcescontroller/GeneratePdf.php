@@ -16,17 +16,53 @@ class GeneratePdf extends Controller{
         {
             $data=[
                 'date'=>$_POST['date'],
-                'ppekits'=>$_POST['ppekits'],
-                'n95'=>$_POST['n95'],
-                'vtm'=>$_POST['vtm'],
-                'ventilator'=>$_POST['ventilator'],
-                'patientbed'=>$_POST['patientbed'],
-                'quarantinebed'=>$_POST['quarantinebed'],
-                'icu'=>$_POST['icu'],
+                'ppekits'=>'',
+                'n95'=>'',
+                'vtm'=>'',
+                'ventilator'=>'',
+                'patientbed'=>'',
+                'quarantinebed'=>'',
+                'icu'=>'',
                 'date_err'=>'',
                 'res'=>'',
-                'districtres'=>''
+                'districtres'=>'',
+                'kits_err'=>''
             ];
+            if(isset($_POST['ppekits']))
+            {
+                $data['ppekits']=$_POST['ppekits'];
+            }
+
+            if(isset($_POST['n95']))
+            {
+               $data['n95']= $_POST['n95'];
+            }
+            if(isset($_POST['vtm']))
+            {
+                $data['vtm']=$_POST['vtm'];
+            }
+            if(isset($_POST['ventilator']))
+            {
+                $data['ventilator']=$_POST['ventilator'];
+            }
+            if(isset($_POST['patientbed']))
+            {
+                $data['patientbed']=$_POST['patientbed'];
+            }
+            if(isset($_POST['quarantinebed']))
+            {
+                $data['quarantinebed']=$_POST['quarantinebed'];
+            }
+            if(isset($_POST['icu']))
+            {
+                $data['icu']= $_POST['icu'];
+            }
+           
+            if(empty($data['ppekits'])&&empty($data['n95'])&&empty($data['vtm'])&&empty($data['ventilator'])&&empty($data['patientbed'])&&empty($data['quarantinebed'])&&empty($data['icu']))
+            {
+                $data['kits_err']='select atleast one of above data';
+                
+            }
             if(empty($data['date']))
             {
                 $data['date_err']='Field can\'t be empty';
@@ -34,7 +70,7 @@ class GeneratePdf extends Controller{
             if(date("yy-m-d",time())<$data['date']){
                 $data['date_err']='Date Selected must be less than current date';
             }
-            if(empty($data['date_err']))
+            if(empty($data['date_err'])&&empty($data['kits_err']))
             {
                 $res=$this->generatePdf->getFilteredData($data);
                 $data['res']=$res;
@@ -58,7 +94,8 @@ class GeneratePdf extends Controller{
                 'patientbed'=>'',
                 'quarantinebed'=>'',
                 'icu'=>'',
-                'date_err'=>''
+                'date_err'=>'',
+                'kits_err'=>''
             ];
             $this->views('resources/generatepdf',$data);
         }
@@ -222,17 +259,17 @@ class GeneratePdf extends Controller{
         $pdf->Cell($w[2], 10, $latestdata->ventilatorvacantcumulative, 'LR', 0, 'R', 1);
         $pdf->Cell($w[3], 10, $latestdata->ventilatorcumulative, 'LR', 0, 'R', 1);
         $pdf->Ln();
-        $pdf->Cell($w[0], 10, 'Patient Beds', 'LR', 0, 'L', 0);
+        $pdf->Cell($w[0], 10, 'Patient Bed', 'LR', 0, 'L', 0);
         $pdf->Cell($w[1], 10, $latestdata->patientbedusedcumulative, 'LR', 0, 'R', 0);
         $pdf->Cell($w[2], 10, $latestdata->patientbedvacantcumulative, 'LR', 0, 'R', 0);
         $pdf->Cell($w[3], 10, $latestdata->patientbedcumulative, 'LR', 0, 'R', 0);
         $pdf->Ln();
-        $pdf->Cell($w[0], 10, 'Quarantine Beds', 'LR', 0, 'L', 1);
+        $pdf->Cell($w[0], 10, 'Quarantine Bed', 'LR', 0, 'L', 1);
         $pdf->Cell($w[1], 10, $latestdata->quarantinebedusedcumulative, 'LR', 0, 'R', 1);
         $pdf->Cell($w[2], 10, $latestdata->quarantinebedvacantcumulative, 'LR', 0, 'R', 1);
         $pdf->Cell($w[3], 10, $latestdata->quarantinebedcumulative, 'LR', 0, 'R', 1);
         $pdf->Ln();
-        $pdf->Cell($w[0], 10, 'ICU Beds', 'LR', 0, 'L', 0);
+        $pdf->Cell($w[0], 10, 'ICU Bed', 'LR', 0, 'L', 0);
         $pdf->Cell($w[1], 10, $latestdata->icuusedcumulative, 'LR', 0, 'R', 0);
         $pdf->Cell($w[2], 10, $latestdata->icuvacantcumulative, 'LR', 0, 'R', 0);
         $pdf->Cell($w[3], 10, $latestdata->icucumulative, 'LR', 0, 'R', 0);
@@ -242,7 +279,7 @@ class GeneratePdf extends Controller{
 
 
         ob_end_clean();
-        $pdf->Output('districtdata.pdf', 'D');
+        $pdf->Output($_SESSION['district'].'districtdata.pdf', 'D');
     }
 }
 
